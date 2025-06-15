@@ -19,7 +19,7 @@ export default function Modelos() {
             rank="#1"
             nome="Gibson Les Paul"
             ano="1958"
-            captacao="Humbercker"
+            captacao="Humbucker"
             ponte="Fixa"
             pontoForte="Sustain e Tom Aveludado"
             artistas="Slash, Jimmy Page"
