@@ -22,7 +22,7 @@ export default function Modelos() {
             captacao="Humbercker"
             ponte="Fixa"
             pontoForte="Sustain e Tom Aveludado"
-            artistas="Slash, Jimmy Page"
+            artistas="Slash, Jimmy Page a"
             imageUrl="/LesPaul.png"
           />
         </div>
