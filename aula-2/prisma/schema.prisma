@@ -1,7 +1,6 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../app/generated/prisma"
 }
 
 datasource db {
@@ -9,8 +8,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Item {
+model Album {
   id Int @id @default(autoincrement())
   name String
-  createdAt DateTime @default(now())
+  artist String
+  year Int
+  genre String
+  guitarrist String
+  guitar String
+  imageurl String
+}
+
+model Guitar {
+  id Int @id @default(autoincrement())
+  name String
+  year Int
+  pickups String
+  bridge String
+  highlight String
+  artists String
+  imageurl String
+  rank Int @unique
 }

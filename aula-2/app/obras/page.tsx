@@ -1,8 +1,47 @@
 "use client";
 
 import AlbumCard from "@/components/AlbumCard";
+import { useEffect, useState } from "react";
+
+interface Album {
+  id: number;
+  name: string;
+  artist: string;
+  year: number;
+  genre: string;
+  guitarrist: string;
+  guitar: string;
+  imageurl: string;
+}
 
 export default function Obras() {
+  const [albums, setAlbums] = useState<Album[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchAlbums = async () => {
+      try {
+        const response = await fetch("/api/albums");
+        const data = await response.json();
+        setAlbums(data);
+      } catch (error) {
+        console.error("Error fetching albums:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAlbums();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex text-3xl sm:text-4xl font-bold justify-center items-center min-h-screen">
+        <p>Carregando...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen p-8 pb-20 gap-8 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <div className="mt-8 w-full max-w-3xl text-center space-y-8">
@@ -16,60 +55,19 @@ export default function Obras() {
         </p>
         <div className="h-px bg-white my-8 w-full mt-16 mb-16"></div>
 
-        <AlbumCard
-          rank="#1"
-          nome="Dark Side of the Moon"
-          artista="Pink Floyd"
-          ano="1973"
-          estilo="Psicodélco / Progressivo"
-          guitarristas="David Gilmour"
-          guitarraUsada="Fender Stratocaster '57"
-          imageUrl="/Dark_side_of_the_Moon.png"
-        />
-
-        <AlbumCard
-          rank="#2"
-          nome="Paranoid"
-          artista="Black Sabbath"
-          ano="1970"
-          estilo="Heavy Metal"
-          guitarristas="Tony Iommi"
-          guitarraUsada="Gibson SG Special '65"
-          imageUrl="/Paranoid.png"
-        />
-
-        <AlbumCard
-          rank="#3"
-          nome="Rust in Peace"
-          artista="Megadeth"
-          ano="1990"
-          estilo="Thrash Metal"
-          guitarristas="Marty Friedman, Dave Mustaine"
-          guitarraUsada="Jackson Kelly, Jackson King V"
-          imageUrl="/RustInPeace.webp"
-        />
-
-        <AlbumCard
-          rank="#4"
-          nome="Ride the Lightning"
-          artista="Metallica"
-          ano="1984"
-          estilo="Thrash Metal"
-          guitarristas="Kirk Hammett, James Hetfield"
-          guitarraUsada="Gibson Flying V, Gibson Explorer"
-          imageUrl="/RideTheLightning.webp"
-        />
-
-        <AlbumCard
-          rank="#5"
-          nome="Led Zeppelin IV"
-          artista="Led Zeppelin"
-          ano="1971"
-          estilo="Hard Rock/Blues Rock"
-          guitarristas="Jimmy Page"
-          guitarraUsada="Gibson Les Paul '59"
-          imageUrl="/LedZeppelinIV.jpg"
-        />
+        {albums.map((album, index) => (
+          <AlbumCard
+            key={album.id}
+            rank={`#${index + 1}`}
+            nome={album.name}
+            artista={album.artist}
+            ano={album.year.toString()}
+            estilo={album.genre}
+            guitarristas={album.guitarrist}
+            guitarraUsada={album.guitar}
+            imageUrl={album.imageurl}
+          />
+        ))}
       </div>
     </div>
   );
