@@ -9,24 +9,24 @@ datasource db {
 }
 
 model Album {
-  id Int @id @default(autoincrement())
-  name String
-  artist String
-  year Int
-  genre String
+  id         Int      @id @default(autoincrement())
+  name       String
+  artist     String
+  year       Int
+  genre      String
   guitarrist String
-  guitar String
-  imageurl String
+  guitar     String
+  imageurl   String
 }
 
 model Guitar {
-  id Int @id @default(autoincrement())
-  name String
-  year Int
-  pickups String
-  bridge String
+  id        Int        @id @default(autoincrement())
+  name      String
+  year      Int
+  pickups   String
+  bridge    String
   highlight String
-  artists String
-  imageurl String
-  rank Int @unique
+  artists   String
+  imageurl  String
+  rank      Int        @unique
 }
