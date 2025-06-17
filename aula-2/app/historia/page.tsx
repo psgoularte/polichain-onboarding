@@ -1,3 +1,5 @@
+"use client";
+
 import Timeline from "@/components/TimeLine";
 
 export default function GuitarHistory() {

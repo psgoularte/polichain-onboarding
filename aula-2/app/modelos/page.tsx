@@ -1,3 +1,5 @@
+"use client";
+
 import Card from "@/components/Card";
 
 export default function Modelos() {
@@ -32,7 +34,7 @@ export default function Modelos() {
           <Card
             rank="#2"
             nome="Ibanez JEM"
-            ano="1985"
+            ano="1987"
             captacao="DiMarzio"
             ponte="Floyd Rose"
             pontoForte="Braço Wizard"

@@ -1,20 +1,18 @@
-//"use client";
+"use client";
 
 import ImageButton from "@/components/Button";
-//import { useState, useEffect } from "react";
+
+import { useState, useEffect } from "react";
 
 export default function Home() {
-  //const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("");
 
-  /* useEffect(() => {
+  useEffect(() => {
     async function loadHelloWorld() {
       try {
-        const response = await fetch("/api/helloworld");
-
-        console.log(response);
+        const response = await fetch("/api/helloword");
 
         const json = await response.json();
-        console.log(json);
 
         setMessage(json.message);
       } catch (err) {
@@ -22,7 +20,7 @@ export default function Home() {
       }
     }
     loadHelloWorld();
-  }, []); */
+  }, []);
 
   return (
     <div className="grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen p-8 pb-20 gap-8 sm:p-20 font-[family-name:var(--font-geist-sans)]">
